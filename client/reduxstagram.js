@@ -1,29 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import store from './store'
+import Posts from './components/Posts'
+import MainApp from './components/App'
+import css from './styles/bootstrap.css'
+import css1 from './styles/custom.css'
 
-import { render } from 'react-dom';
 
-// Import css
-import css from './styles/style.styl';
-
-// Import Components
-import Main from './components/Main';
-import Single from './components/Single';
-import PhotoGrid from './components/PhotoGrid';
-
-// import react router deps
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { Provider } from 'react-redux';
-import store, { history } from './store';
-
-const router = (
+const App = (
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={Main}>
-        <IndexRoute component={PhotoGrid}></IndexRoute>
-        <Route path="/view/:postId" component={Single}></Route>
-      </Route>
-    </Router>
+    <MainApp />
   </Provider>
 )
 
-render(router, document.getElementById('root'));
+render(App, document.getElementById('root'));
