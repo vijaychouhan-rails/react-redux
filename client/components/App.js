@@ -1,23 +1,18 @@
 import { bindActionCreators } from 'redux';
-import React from 'react'
-import { connect } from 'react-redux'
-import * as postAction from '../actions/posts';
-import Posts from './Posts'
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/posts';
+import Main from './Main';
 
 
 function mapStateToProps(state){
-  //console.log("State mapStateToProps")
-  //console.log(state.myPostData)
-  //console.log("ENndState mapStateToProps")
   return {
-    mydata: 'This is test data',
-    storePost: state.myPostData
+    posts: state.posts
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators(postAction, dispatch)
+  return bindActionCreators(actionCreators, dispatch)
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts)
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

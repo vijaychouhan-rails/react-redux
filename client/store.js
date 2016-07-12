@@ -1,6 +1,12 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compse } from 'redux';
+import { syncHistoryWithStore} from 'react-router-redux';
+import { browserHistory } from 'react-router';
+
+// import the root reducer
+import rootReducer from './reducers/index';
+
+
 import thunk from 'redux-thunk';
-import PostsReducer from './reducers/PostsReducer';
 import comments from './data/comments';
 import posts from './data/posts';
 import { post, fetchPost } from './actions/posts'
@@ -9,8 +15,9 @@ import { post, fetchPost } from './actions/posts'
 const defaultState = {
 };
 
+const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
 
-const store = createStore(PostsReducer, defaultState, applyMiddleware(thunk))
-//console.log('get state');
-//console.log(store.getState());
-export default store
+export const history = syncHistoryWithStore(browserHistory, store);
+
+export default store;
+

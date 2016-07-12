@@ -15,9 +15,6 @@ export function fetchPost(){
         return(response.json());
       })
       .then(function(result){
-        //console.log("result data==================")
-        //console.log(result.post);
-        //console.log("End result data==================")
         dispatch(getPost(result.post))
       })
       .catch(function(error){

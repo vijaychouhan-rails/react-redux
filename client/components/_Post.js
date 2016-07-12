@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Post = React.createClass({
   render() {
     return (
       <div className="photo-grid col-md-6">
         <p>
-          <b>{this.props.post.caption}</b>
+          <b><Link to={`/post/${this.props.post.code}`}>{this.props.post.caption}</Link></b>
         </p>
         <p>
           <span> {this.props.post.code} </span><br/>
