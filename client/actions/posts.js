@@ -1,13 +1,19 @@
-export function getPost(post){
+export function getPost(posts){
   return {
     type: 'getPost',
-    post
+    posts
   }
 };
 
+export function likes(post){
+  return{
+    type: 'likes',
+    post
+  }
+}
+
 export function fetchPost(){
   return function(dispatch, getState){
-    //console.log("calling to fetchPost")
     //var state = getState();
     var url = 'http://localhost:3000/mytestpost';
     fetch(url, {mode: 'cors'})

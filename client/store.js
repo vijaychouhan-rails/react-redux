@@ -18,6 +18,6 @@ const defaultState = {
 const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
 
 export const history = syncHistoryWithStore(browserHistory, store);
-
+//store.dispatch(fetchPost()); //load initial data
 export default store;
 
